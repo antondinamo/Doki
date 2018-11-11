@@ -20,12 +20,14 @@ namespace DokiAPI.Services
             };
             var text1 = new Text
             {
+                Id = 1,
                 Value = "Новый заголовок",
                 TextWeight = TextWeight.Header1
             };
             var text2 = new Text
             {
-                Value = "Новый абзац текстаn\rс переносом строки",
+                Id = 2,
+                Value = "Новый абзац текстаn\n\rпереносом строки",
                 TextWeight = TextWeight.Paragraph
             };
             page.Components.Add(text1);

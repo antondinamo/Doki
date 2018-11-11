@@ -21,11 +21,12 @@ namespace DokiAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public Page Get(int id)
         {
             var page = pages.Get(id);
 
-            return Ok(page);
+
+            return page;
         }
     }
 }
