@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace DokiAPI.Models.Enums
 {
-    public enum TextWeight
+    public enum CardType
     {
-        Header1,
-        Header2,
-        Header3,
-        Paragraph
+        Text,
+        List
     }
 }

@@ -2,25 +2,25 @@
   <div>
     <h1>{{title}}</h1>
     <h3>{{description}}</h3>
-    <PageEntity 
-      v-for="entity in entities" :key="entity.id" :text="entity.value">
-    </PageEntity>
+    <CardBuilder 
+      v-for="card in cards" :key="card.id" :card="card">
+    </CardBuilder>
   </div>
 </template>
 
 <script>
-import PageEntity from "./PageEntityBuilder.vue";
+import CardBuilder from "./cards/CardBuilder.vue";
 
 export default {
   name: "Page",
   components: {
-    PageEntity
+    CardBuilder
   },
   data: function(){
     return{
-      title: "",
-      description: "",
-      entities: []
+      title: String,
+      description: String,
+      cards: Array
     }
   },
   created() {
@@ -35,8 +35,7 @@ export default {
       .then((json) => {
         this.title = json.title;
         this.description = json.description;
-        this.entities = json.components;
-        console.log(json);
+        this.cards = json.cards;
       })
       .catch((error) => {
         console.log(error);

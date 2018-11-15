@@ -1,5 +1,5 @@
 ﻿using DokiAPI.Models;
-using DokiAPI.Models.Components;
+using DokiAPI.Models.Cards;
 using DokiAPI.Models.Enums;
 using DokiAPI.Services.Interfaces;
 using System;
@@ -18,20 +18,41 @@ namespace DokiAPI.Services
                 Title = "Новая страница",
                 Description = "Описание новой страницы"
             };
-            var text1 = new Text
+            var text1 = new TextCard
             {
                 Id = 1,
-                Value = "Новый заголовок",
-                TextWeight = TextWeight.Header1
+                Text = new Text("Текст номер один"),
+                TextType = TextType.Header1
             };
-            var text2 = new Text
+            var text2 = new TextCard
             {
                 Id = 2,
-                Value = "Новый абзац текстаn\n\rпереносом строки",
-                TextWeight = TextWeight.Paragraph
+                Text = new Text("Новый абзац текста\n\r c переносом строки aasdasd asdasd"),
+                TextType = TextType.Paragraph
             };
-            page.Components.Add(text1);
-            page.Components.Add(text2);
+            text2.Text.AddEntity(EntityType.Bold, 0, 11);
+            text2.Text.AddEntity(EntityType.Italic, 11, 8);
+            text2.Text.AddEntity(EntityType.Strikethrough, 13, 5);
+            text2.Text.AddEntity(EntityType.Underline, 18, 7);
+            var listText = new Text("очередной пункт списка");
+            listText.AddEntity(EntityType.Bold, 0, 11);
+            listText.AddEntity(EntityType.Italic, 11, 8);
+            var list1 = new ListCard
+            {
+                Id = 3,
+                Items = new List<Text> { listText, listText, listText, listText },
+                ListType = ListType.BulletedList
+            };
+            var list2 = new ListCard
+            {
+                Id = 3,
+                Items = new List<Text> { listText, listText },
+                ListType = ListType.OrderedList
+            };
+            page.Cards.Add(text1);
+            page.Cards.Add(text2);
+            page.Cards.Add(list1);
+            page.Cards.Add(list2);
             return page;
         }
 

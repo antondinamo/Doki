@@ -8,11 +8,11 @@ module.exports = {
   css: undefined,
   devServer: {
     proxy: {
-        '/api': {
-          target: 'http://localhost:5000/api',
-          ws: true,
-          changeOrigin: true
-        }
+      '/api': {
+        target: 'http://localhost:5000',
+        ws: true,
+        changeOrigin: true
+      }
     }
   }
-}
+};

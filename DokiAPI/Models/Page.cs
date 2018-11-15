@@ -1,5 +1,4 @@
-﻿using DokiAPI.Models.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +10,6 @@ namespace DokiAPI.Models
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public ICollection<IComponent> Components { get; set; } = new List<IComponent>();
+        public ICollection<ICard> Cards { get; set; } = new List<ICard>();
     }
 }
