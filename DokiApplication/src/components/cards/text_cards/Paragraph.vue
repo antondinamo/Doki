@@ -1,13 +1,12 @@
 <template>
   <div>
-    <p>
-      <TextRender :text="text" :entities="entities"/>
-    </p>
+    <p>{{htmlText}}</p>
+    <p v-html="htmlText" />
   </div>
 </template>
 
 <script>
-import TextRender from '../../../services/TextRenderService.vue'
+import TextRender from '../../../services/TextRenderService.js'
 
 export default {
   name: "Paragraph",
@@ -17,6 +16,11 @@ export default {
   props: {
     text: String,
     entities: Array
+  },
+  computed: {
+    htmlText: function() {
+      return TextRender.render(this.text, this.entities);  
+    }
   }
 };
 </script>

@@ -12,7 +12,6 @@ export default {
 
   render: function(createElement, context) {
     var card = context.props.card;
-    
     function selectedCard() {
       // выбор карты
       switch (card.cardType) {

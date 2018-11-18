@@ -5,16 +5,19 @@
     <CardBuilder 
       v-for="card in cards" :key="card.id" :card="card">
     </CardBuilder>
+    <TextEditor/>
   </div>
 </template>
 
 <script>
 import CardBuilder from "./cards/CardBuilder.vue";
+import TextEditor from "./TextEditor.vue";
 
 export default {
   name: "Page",
   components: {
-    CardBuilder
+    CardBuilder,
+    TextEditor
   },
   data: function(){
     return{

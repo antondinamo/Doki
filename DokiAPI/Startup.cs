@@ -28,6 +28,15 @@ namespace DokiAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            /* сериализовывать пперечисления в строки
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                    options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                });
+            */
             services.AddCors(options =>
             {
                 options.AddPolicy("VueCorsPolicy", builder =>
@@ -39,6 +48,7 @@ namespace DokiAPI
                         .AllowAnyOrigin(); // .WithOrigins("http://localhost:8080");
                 });
             });
+
             services.AddSingleton<IRepository<Page>, PageRepository>();
         }
 

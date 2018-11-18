@@ -1,13 +1,12 @@
 <template>
   <div>
     <h3>
-      <TextRender :text="text" :entities="entities"/>
     </h3>
   </div>
 </template>
 
 <script>
-import TextRender from '../../../services/TextRenderService.vue'
+import TextRender from '../../../services/TextRenderService.js'
 
 export default {
   name: "Header3",

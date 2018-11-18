@@ -1,13 +1,12 @@
 <template>
   <div>
-    <h1>
-      <TextRender :text="text" :entities="entities"/>
+    <h1 v-html="htmlText">
     </h1>
   </div>
 </template>
 
 <script>
-import TextRender from '../../../services/TextRenderService.vue'
+import TextRender from '../../../services/TextRenderService.js'
 
 export default {
   name: "Header1",
@@ -17,6 +16,11 @@ export default {
   props: {
     text: String,
     entities: Array
+  },
+  computed: {
+    htmlText: function() {
+      return TextRender.render(this.text, this.entities);  
+    }
   }
 };
 </script>

@@ -26,7 +26,7 @@ export default {
         case 3:
           return Header3;
       }
-    }
+    };
 
     return createElement(selectedCard(), context);
   }

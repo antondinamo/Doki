@@ -6,6 +6,7 @@ module.exports = {
   productionSourceMap: undefined,
   parallel: undefined,
   css: undefined,
+
   devServer: {
     proxy: {
       '/api': {
@@ -14,5 +15,7 @@ module.exports = {
         changeOrigin: true
       }
     }
-  }
+  },
+
+  lintOnSave: undefined
 };

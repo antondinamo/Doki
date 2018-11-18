@@ -27,7 +27,7 @@ namespace DokiAPI.Services
             var text2 = new TextCard
             {
                 Id = 2,
-                Text = new Text("Новый абзац текста\n\r c переносом строки aasdasd asdasd"),
+                Text = new Text("Новый абзац текста без переноса строки aasdasd asdasd"),
                 TextType = TextType.Paragraph
             };
             text2.Text.AddEntity(EntityType.Bold, 0, 11);

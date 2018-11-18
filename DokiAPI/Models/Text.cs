@@ -37,13 +37,13 @@ namespace DokiAPI.Models
     public class Entity
     {
         public EntityType Type { get; set; }
-        public int StartIndex { get; set; }
+        public int Position { get; set; }
         public int Length { get; set; }
 
-        public Entity(EntityType entityType, int startIndex, int length)
+        public Entity(EntityType entityType, int position, int length)
         {
             Type = entityType;
-            StartIndex = startIndex;
+            Position = position;
             Length = length;
         }
     }
