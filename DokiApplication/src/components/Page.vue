@@ -5,7 +5,7 @@
     <CardBuilder 
       v-for="card in cards" :key="card.id" :card="card">
     </CardBuilder>
-    <TextEditor/>
+    <TextEditor :content="text" @update="text = $event"/>
   </div>
 </template>
 
@@ -23,7 +23,8 @@ export default {
     return{
       title: String,
       description: String,
-      cards: Array
+      cards: Array,
+      text: "asdasdasd"
     }
   },
   created() {

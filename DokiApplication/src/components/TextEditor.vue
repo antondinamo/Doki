@@ -1,5 +1,6 @@
 <template>
-  <div id="input" ref="input" v-on:keyup="keyInput" v-on:click="onClick" tabindex="0">{{message}}<strong>{{message}}</strong>{{message}}</div>
+  <!--<div id="input" ref="input" v-on:keyup="keyInput" v-on:click="onClick" tabindex="0" v-html="message"></div>-->
+  <div ref="input" contenteditable="true" v-on:input="update">{{content}}</div>
 </template>
 
 <script>
@@ -11,33 +12,46 @@ export default {
     TextRender
   },
   props: {
-    text: Object
+    text: Object,
+    content: String
   },
   data: function() {
     return {
-      message: "abc"
+      message: 'abc',
+      position: Number
     }
   },
   methods: {
+    update: function(event) {
+      this.$emit('update', event.target.innerText);
+    },
     keyInput: function(event) {
       if (event) event.preventDefault();
       let code = event.keyCode;
       if ((code >= 48 && code <= 90)
         || (code >= 96 && code <= 110)
         || (code == 32)) {
-        this.message += event.key;
+        this.message = insert(this.position, this.message, event.key);
+        this.position += event.key.length;
         console.log({key: event.key});
+      }
+      
+      function insert(position, string, substring) {
+        if (position == string.length) {
+          return string + substring;
+        }
+        else {
+          return string.substring(0, position) + 
+            substring + string.substring(position);
+        }
       }
     },
     onClick: function(event) {
       this.$refs.input.focus();
       
-      var selection = window.getSelection(),
-        range = selection.getRangeAt(0);
-        //console.log(selection, range);
+      this.position = getCurrentCursorPosition(this.$refs.input.id);
       
-      let pos = getCurrentCursorPosition('input');
-      console.log(pos);
+      console.log(this.position);
       
       function isChildOf(node, parentId) {
         while (node !== null) {
@@ -62,7 +76,7 @@ export default {
                     if (node.id === parentId) {
                         break;
                     }
-
+                    
                     if (node.previousSibling) {
                         node = node.previousSibling;
                         charCount += node.textContent.length;
@@ -83,5 +97,9 @@ export default {
 }
 </script>
 <style scoped>
-
+  .caret {
+    display: inline;
+    color: black;
+    background-image: '../../dist/asserts/img/caret.png';
+  }
 </style>
