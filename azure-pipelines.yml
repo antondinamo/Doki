@@ -15,10 +15,3 @@ variables:
 steps:
 - script: |
   dotnet build --configuration $(buildConfiguration)
-  dotnet test dotnetcore-tests --configuration $(buildConfiguration) --logger trx
-
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
