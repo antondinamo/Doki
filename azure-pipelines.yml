@@ -14,10 +14,9 @@ variables:
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
-- script: dotnet test DokiAPI.Tests --configuration $(buildConfiguration) --logger trx
 
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
+- task: DotNetCoreCLI@2
   inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
