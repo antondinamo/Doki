@@ -14,19 +14,32 @@ namespace DokiAPI.Controllers
     [ApiController]
     public class PagesController : ControllerBase
     {
-        private readonly IRepository<Page> pages;
+        private readonly IRepository<Page> _pages;
         public PagesController(IRepository<Page> repository)
         {
-            pages = repository;
+            _pages = repository;
         }
 
         [HttpGet("{id}")]
         public Page Get(int id)
         {
-            var page = pages.Get(id);
+            var page = _pages.Get(id);
 
 
             return page;
+        }
+
+        [HttpGet]
+        [Route("Contents")]
+        public Dictionary<int, string> GetContents()
+        {
+            var result = new Dictionary<int, string>()
+            {
+                { 1, "Страница один" },
+                { 2, "Страница два" }
+            };
+
+            return result;
         }
     }
 }

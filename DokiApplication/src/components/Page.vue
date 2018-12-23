@@ -5,7 +5,7 @@
     <CardBuilder 
       v-for="card in cards" :key="card.id" :card="card">
     </CardBuilder>
-    <TextEditor :content="text" @update="text = $event"/>
+    <TextEditor/>
   </div>
 </template>
 

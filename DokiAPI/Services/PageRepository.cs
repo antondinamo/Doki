@@ -15,6 +15,7 @@ namespace DokiAPI.Services
         {
             var page = new Page
             {
+                Id = id,
                 Title = "Новая страница",
                 Description = "Описание новой страницы"
             };
@@ -58,7 +59,10 @@ namespace DokiAPI.Services
 
         public IEnumerable<Page> GetAll()
         {
-            throw new NotImplementedException();
+            var page1 = Get(1);
+            var page2 = Get(2);
+
+            return new List<Page> { page1, page2 };
         }
 
         public void Create(Page item)

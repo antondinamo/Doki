@@ -2,6 +2,9 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Hello world"/>
+    <button>страница 1</button><br/>
+    <button>страница 2</button><br/>
+    <button>редактировать / смотреть</button>
     <Page/>
   </div>
 </template>
