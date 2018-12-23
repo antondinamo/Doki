@@ -14,3 +14,9 @@ variables:
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet test <test-project> --logger trx
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
