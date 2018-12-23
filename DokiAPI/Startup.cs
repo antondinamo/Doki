@@ -36,7 +36,7 @@ namespace DokiAPI
                     options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
                     options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
                 });
-            */
+            */ 
             services.AddCors(options =>
             {
                 options.AddPolicy("VueCorsPolicy", builder =>
